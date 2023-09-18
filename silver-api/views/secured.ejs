@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <nav> 
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/secured/">Secure</a></li>
+      <% if(!isAuthenticated) { %>
+        <li><a href="/login/">Login</a></li>
+      <% } else { %>
+        <li><a href="/logout/">Logout</a></li>
+      <% } %>
+    </ul>
+  </nav>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+  <% if(user) { %>
+    <div class="profileInfo">
+      <img src="<&=user.picture %>" />
+      <p class="name">
+        <%= user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1) %>
+      </p>
+    </div>
+    <% } %>
+    <p><%= JSON.stringify(data, null, 2) %> </p>
+    <p><%= JSON.stringify(scopedData, null, 2) %> </p>
+  </body>
+</html>
+
